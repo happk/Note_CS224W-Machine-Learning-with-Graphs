@@ -1,0 +1,897 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Noto Sans SC Medium", "HanChanJinShuSong", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+    color: var(--main-text-color);
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+cursor {
+    color: var(--text-cursor-color)
+}
+
+a {
+    color: var(--a-color);
+}
+strong {
+    font-weight: bold;
+    color: var(--text-strong-color);
+}
+strong code {
+    color: var(--text-strong-color);
+}
+em {
+    font-style: italic;
+    color: var(--text-em-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+#write h1:hover a.anchor,
+#write h2:hover a.anchor,
+#write h3:hover a.anchor,
+#write h4:hover a.anchor,
+#write h5:hover a.anchor,
+#write h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.1em;
+    line-height: 1.2;
+    color: var(--h1-4-text-color);
+    text-align: center;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background-color: var(--h1-background-color);
+    border-left: 0.5rem solid var(--header-lr-border-color);
+    border-right: 0.5rem solid var(--header-lr-border-color);
+}
+h2 {
+    font-size: 1.8em;
+    line-height: 1.225;
+    color: var(--h1-4-text-color);
+    border-bottom: .13rem solid var(--header-bottom-border-color);
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+    color: var(--h1-4-text-color);
+    border-bottom: .12rem dashed var(--header-bottom-border-color);
+}
+h4 {
+    font-size: 1.2em;
+    color: var(--h1-4-text-color);
+}
+h5 {
+    font-size: 1.1em;
+    color: var(--h5-text-color);
+}
+h6 {
+    font-size: 1em;
+    color: var(--h6-text-color);
+}
+#write h4:before {
+    content: "";
+    display: inline-block;
+    background: var(--header-lr-border-color);
+    opacity: 1;
+    pointer-events: none;
+    width: .3rem;
+    vertical-align: middle;
+    margin-right: .5rem;
+    height: 1.2rem;
+    transform: translateY(-0.1rem);
+}
+#write>h3.md-focus:before,
+#write>h4.md-focus:before {
+    border: 0px;
+    position: unset;
+    padding: 0px;
+    font-size: 0px;
+    line-height: unset;
+    border-radius: 0px;
+    float: unset;
+}
+
+img {
+    border: 1px solid var(--img-border-color);
+}
+
+mark {
+    background: var(--mark-bg-color);
+    color: var(--main-text-color);
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: .7em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+/* 水平分割线 horizontal rule */
+hr {
+    height: .1rem;
+    padding: 0;
+    margin: 16px 0;
+    background-color: var(--hr-color);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid var(--blockquote-decoration-color);
+    background-color: var(--blockquote-bg-color);
+    padding: 8px 10px;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+thead {
+    background-color: var(--table-thead-bg-color);
+}
+table th {
+    font-weight: bold;
+    border: 0.05rem solid var(--table-border-color);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 0.05rem solid var(--table-border-color);
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+/* 代码块 */
+.md-fences,
+tt {
+    font-size: 95%;
+    background-color: var(--codeblock-bg-color);
+    padding: 12px 4px 9px 4px;
+}
+
+/* 行内代码 */
+code {
+    color: var(--code-inline--color);
+    background-color: var(--code-inline-bg-color);
+    padding: 2px;
+    font-size: 95%;
+    display: inline;
+    vertical-align: middle;
+}
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+/****** Sidebar and Quick open******/
+#typora-quick-open{
+  color: var(--control-text-color); /* 控制侧边栏所有前景色均为控制文本色 */
+}
+
+.typora-quick-open-item-path{ /* file path in the Quick open panel*/
+  white-space: nowrap;
+}
+
+/* 大纲文本覆盖色 */
+.outline-item:hover {
+    background-color: var(--active-file-bg-color);
+}
+
+#sidebar-files-menu {
+  border: 1px solid var(--sidebar-border-color); /* 侧边栏下方文件操作板边框色 */
+}
+
+#file-library-tree .file-tree-node {
+    padding-left: .9em; /* 文件树每级缩进 */
+    color: var(--control-text-color);
+}
+
+.file-tree-node .file-node-content:hover {
+    background-color: var(--sidebar-btn-hover-color); /* 鼠标指向文件时的背景色 */
+    cursor: pointer;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background: var(--sidebar-btn-hover-color); /* 侧边栏下方操作栏按钮 hover 色 */
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .show+.menuitem-group-label.show {
+  border-color: var(--sidebar-border-color); /* 侧边栏下方文件操作板里项目边框色 */
+}
+
+#typora-sidebar #ty-sidebar-footer {
+    border-top: 1px solid var(--sidebar-border-color); /* 侧边栏下方操作栏边框色 */
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu li>a:hover {
+    background: var(--sidebar-btn-hover-color); /* 侧边栏下方文件操作板 按钮 hover 颜色 */
+}
+
+/* 侧边栏下方文件操作板里 文件排序规则选项按钮 active */
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active,
+/* 侧边栏下方文件操作板里 当前文件夹后缀小圆点 */
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .selected-folder-menu-item a:after {
+    color: var(--sidebar-sort-btn-active-color); 
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn:hover {
+    cursor: pointer;
+    color: var(--sidebar-sort-btn-active-color); /* 侧边栏下方文件操作板里 文件排序规则选项按钮 hover 颜色 */
+}
+
+/* sidebar tab for windows */
+.info-panel-tab:hover {
+  color: var(--control-text-color);
+}
+
+.sidebar-menu {
+  color: var(--control-text-color);
+}
+
+.sidebar-menu  .dropdown-menu>li>a, .sidebar-menu .dropdown-menu>li>a:focus, .sidebar-menu .dropdown-menu>li>a:hover {
+  color: var(--control-text-color);
+}
+
+.dropdown-menu .selected-folder-menu-item a:after {
+  color: var(--control-text-color);
+}
+
+/* sidebar search*/
+.sidebar-menu .ty-sidebar-search-panel #file-library-search-input {
+    color: var(--control-text-color);
+    background: var(--sidebar-search-bg-color);
+    border: 1px solid var(--sidebar-border-color);
+}
+
+.sidebar-menu .ty-sidebar-search-panel #file-library-search-input:focus {
+    border-color: var(--sidebar-search-focus-border-color);
+}
+
+.sidebar-menu .ty-sidebar-search-panel {
+    border-bottom: 1px solid var(--sidebar-border-color);
+}
+
+#typora-sidebar-resizer.dragging{
+    color: var(--sidebar-resizer-color); /* 侧边栏宽度设置线颜色 */
+}
+@import "";
+
+:root {
+    /* 系统参数 */
+    --side-bar-bg-color: #0B2646; /* 侧边栏背景色 */
+    --active-file-bg-color: #234564; /* 侧边栏当前打开文件背景色 */
+    --active-file-text-color: var(--control-text-color); /* 侧边栏当前打开文件文本色 */
+    --active-file-border-color: var(--control-text-color); /* 侧边栏当前打开文件左边栏色 */
+    --control-text-color: #cadaf0; /* 控制文本颜色，系统变量只包括文件名色，下面设置成了所有侧边栏文本色 */
+    --control-text-hover-color: var(--control-text-color); /* 控制文本 hover 色，系统变量只包括文件名色 */
+
+    /* 侧边栏颜色 */
+    --sidebar-btn-hover-color: #234564; /* 侧边栏按钮 hover 色，包括文件 & 底部按钮 & 下方文件操作板按钮 hover 颜色 */
+    --sidebar-border-color: #234564;  /* 侧边栏底部按钮 & 侧边栏下方文件操作板边框色 */
+    --sidebar-sort-btn-active-color: #afd5ff; /* 侧边栏下方文件操作板里 文件排序规则选项按钮 active & hover 颜色 */
+    --sidebar-resizer-color: #234564; /* 侧边栏宽度设置线颜色 */
+    --sidebar-search-bg-color: #36404B; /* 侧边栏搜索框背景色 */
+    --sidebar-search-focus-border-color: #afd5ff; /* 侧边栏搜索框聚焦时边框色 */
+    /* 文本颜色 */
+    --main-text-color: #102b5c;   /* 正文文本颜色 */
+    --a-color: #4183C4;           /* 超链接文本颜色 */
+    --text-strong-color: #121926; /* 加粗文本颜色 */
+    --text-em-color: #0052B5;     /* 强调文本（斜体）颜色 */
+    /* 高亮文本颜色 */
+    --mark-bg-color: #D6F4FF;
+    /* 游标颜色 */
+    --text-cursor-color: var(--main-text-color);
+    /* 标题颜色 */
+    --h1-4-text-color: #143673;
+    --h1-background-color: #e6eff9;
+    --header-lr-border-color: #143673;
+    --header-bottom-border-color: #a1adc9;
+    --h5-text-color: #143673;
+    --h6-text-color: #143673;
+    --header-tip-color: var(--header-bottom-border-color);
+    /* 表格颜色 */
+    --table-thead-bg-color: #EFF2F5;
+    --table-border-color: #BFCCD5;
+    /* 引用块颜色 */
+    --blockquote-bg-color: #e6eff9;
+    --blockquote-decoration-color: #244B6B;
+    /* 图片颜色 */
+    --img-border-color: #D4DCE2;
+    /* 行内代码颜色 */
+    --code-inline--color: #224F94;
+    --code-inline-bg-color: #B3BEC946;
+    /* 代码块颜色 */
+    --codeblock-bg-color: #E8F4FF;
+    /* 分割线颜色 */
+    --hr-color: #D4DCE2;
+}
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG2"] path[data-c], mjx-container[jax="SVG2"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>note</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#12-identifying-and-counting-motifs-in-networks">12 Identifying and Counting Motifs in Networks</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1">1</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#121-subgraphs-and-motifs">12.1 Subgraphs and Motifs</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#subgraphs">Subgraphs </a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1-node-induced-subgraph-induced-subgraph">1. Node-induced subgraph (induced subgraph)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2-edge-induced-subgraph-non-induced-subgraph">2. Edge-induced subgraph (non-induced subgraph)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#graph-isomorphism">Graph isomorphism</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#-">-</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#--2">-</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#network-motifs">Network Motifs</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#subgraph-frequency">Subgraph frequency</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#graph-level-frequency-of-gq-in-gt">Graph-level Frequency of G<sub>Q</sub> in G<sub>T</sub></a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#node-level-frequency-of-gq-in-gt">Node-level Frequency of G<sub>Q</sub> in G<sub>T</sub></a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#motif-significance">Motif Significance</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#random-graphs">Random Graphs</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#overview">overview</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#尚有很多擴展">尚有很多擴展</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#122-neural-subgraph-matching">12.2 Neural Subgraph Matching</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#neural-architecture-for-subgraphs">Neural Architecture for Subgraphs</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#decomposing-gt-into-neighborhoods">Decomposing G<sub>T</sub> into Neighborhoods</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#order-embedding-space">Order Embedding Space</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#order-constraint">Order Constraint</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#123-finding-frequent-subgraphs">12.3 Finding Frequent Subgraphs</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#spminer">SPMiner</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='12-identifying-and-counting-motifs-in-networks'><span>12 Identifying and Counting Motifs in Networks</span></h1><ul><li><p><span>subgraph matching</span></p></li></ul><h3 id='1'><span>1</span></h3><p><span>在一個 graph中，找到 &quot;常見&quot; 的 subgraphs</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_02.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_02"></p><ul><li><p><span>subgraphs 是組成network 的成分。具有特別的意義。( </span><a href='#network-motifs'><span>&gt;Why do we need motifs?</span></a><span>)</span></p></li><li><p><span>ex:  化學分子中的&quot;官能基&quot;</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_03.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_03"></p></li></ul><hr /><p><span>如何辨別出這些高頻出現的subgraph</span></p><ol start='' ><li><p>&nbsp;</p></li><li><p><span>GNN產生embedding表示subgraphs</span></p></li><li><p><span>在embedding space中識別</span></p></li></ol><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_04.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_04"></p><h1 id='121-subgraphs-and-motifs'><span>12.1 Subgraphs and Motifs</span></h1><h2 id='subgraphs'><span>Subgraphs </span></h2><p><span>2 ways to formalize &quot;network building blocks (</span><em><span>subgraphs</span></em><span>)&quot;</span></p><ol start='' ><li><p><span>induced subgraph</span></p></li><li><p><span>spanning subgraph</span>
+<span>含所有的點（即點集合同原本的graph），但不一定有所有的邊</span></p></li></ol><p><span>(現在沒人再提edge-induced subgraph了，所以induced subgraph = node-induced subgraph。</span>
+<span>不過先跟著slide作筆記吧 )</span></p><p><span>根據不同的定義，是不同類型的subgraph。</span></p><p>&nbsp;</p><h3 id='1-node-induced-subgraph-induced-subgraph'><span>1. Node-induced subgraph (induced subgraph)</span></h3><p><span>取一個&quot;節點子集&quot;和&quot;連接這些節點的所有邊&quot;。(node-induce 由節點決定)</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_06.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_06"></p><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="13.163ex" height="2.283ex" role="img" focusable="false" viewBox="0 -759 5818.2 1009" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-8-TEX-I-1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"></path><path id="MJX-8-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-8-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-8-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-8-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-8-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-8-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-8-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-8-TEX-I-1D43A"></use></g><g data-mml-node="mo" transform="translate(819,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-8-TEX-V-2032"></use></g></g><g data-mml-node="mo" transform="translate(1341.2,0)"><use data-c="3D" xlink:href="#MJX-8-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(2397,0)"><use data-c="28" xlink:href="#MJX-8-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(2786,0)"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-8-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(861.3,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-8-TEX-V-2032"></use></g></g><g data-mml-node="mo" transform="translate(3891.8,0)"><use data-c="2C" xlink:href="#MJX-8-TEX-N-2C"></use></g><g data-mml-node="msup" transform="translate(4336.4,0)"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-8-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(848.3,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-8-TEX-V-2032"></use></g></g><g data-mml-node="mo" transform="translate(5429.2,0)"><use data-c="29" xlink:href="#MJX-8-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>G</mi><mo data-mjx-alternate="1">′</mo></msup><mo>=</mo><mo stretchy="false">(</mo><msup><mi>V</mi><mo data-mjx-alternate="1">′</mo></msup><mo>,</mo><msup><mi>E</mi><mo data-mjx-alternate="1">′</mo></msup><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">G'=(V',E')</script><span> </span></p><p><span>如果G&#39;是一個node-induced subgraph 則滿足:</span></p><ul><li><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.259ex" height="2.029ex" role="img" focusable="false" viewBox="0 -759 3208.3 897" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.312ex;"><defs><path id="MJX-9-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-9-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-9-TEX-N-2286" d="M84 346Q84 468 166 546T360 635Q361 635 370 635T395 635T430 636T475 636T524 636H679Q694 628 694 616Q694 607 681 597L522 596H470H441Q366 596 338 592T266 568Q244 557 224 542T179 500T139 433T124 346V341Q124 253 185 185Q244 121 328 103Q348 98 366 98T522 96H681Q694 86 694 76Q694 64 679 56H526Q510 56 480 56T434 55Q350 55 289 71T172 141Q84 223 84 346ZM104 -131T104 -118T118 -98H679Q694 -106 694 -118T679 -138H118Q104 -131 104 -118Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-9-TEX-I-1D449"></use></g><g data-mml-node="TeXAtom" transform="translate(861.3,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="2032" xlink:href="#MJX-9-TEX-V-2032"></use></g></g></g><g data-mml-node="mo" transform="translate(1383.5,0)"><use data-c="2286" xlink:href="#MJX-9-TEX-N-2286"></use></g><g data-mml-node="mi" transform="translate(2439.3,0)"><use data-c="1D449" xlink:href="#MJX-9-TEX-I-1D449"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>V</mi><mrow data-mjx-texclass="ORD"><mi data-mjx-alternate="1">′</mi></mrow></msup><mo>⊆</mo><mi>V</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">V^{\prime}\subseteq V</script></p><p><span>節點集V&#39; 是原圖G的節點集V的子集</span></p></li><li><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="27.955ex" height="2.283ex" role="img" focusable="false" viewBox="0 -759 12356.1 1009" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-10-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-10-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-10-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-10-TEX-N-7B" d="M434 -231Q434 -244 428 -250H410Q281 -250 230 -184Q225 -177 222 -172T217 -161T213 -148T211 -133T210 -111T209 -84T209 -47T209 0Q209 21 209 53Q208 142 204 153Q203 154 203 155Q189 191 153 211T82 231Q71 231 68 234T65 250T68 266T82 269Q116 269 152 289T203 345Q208 356 208 377T209 529V579Q209 634 215 656T244 698Q270 724 324 740Q361 748 377 749Q379 749 390 749T408 750H428Q434 744 434 732Q434 719 431 716Q429 713 415 713Q362 710 332 689T296 647Q291 634 291 499V417Q291 370 288 353T271 314Q240 271 184 255L170 250L184 245Q202 239 220 230T262 196T290 137Q291 131 291 1Q291 -134 296 -147Q306 -174 339 -192T415 -213Q429 -213 431 -216Q434 -219 434 -231Z"></path><path id="MJX-10-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-10-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-10-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-10-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-10-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-10-TEX-N-2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path><path id="MJX-10-TEX-N-2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-10-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-10-TEX-N-7D" d="M65 731Q65 745 68 747T88 750Q171 750 216 725T279 670Q288 649 289 635T291 501Q292 362 293 357Q306 312 345 291T417 269Q428 269 431 266T434 250T431 234T417 231Q380 231 345 210T298 157Q293 143 292 121T291 -28V-79Q291 -134 285 -156T256 -198Q202 -250 89 -250Q71 -250 68 -247T65 -230Q65 -224 65 -223T66 -218T69 -214T77 -213Q91 -213 108 -210T146 -200T183 -177T207 -139Q208 -134 209 3L210 139Q223 196 280 230Q315 247 330 250Q305 257 280 270Q225 304 212 352L210 362L209 498Q208 635 207 640Q195 680 154 696T77 713Q68 713 67 716T65 731Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-10-TEX-I-1D438"></use></g><g data-mml-node="TeXAtom" transform="translate(848.3,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="2032" xlink:href="#MJX-10-TEX-V-2032"></use></g></g></g><g data-mml-node="mo" transform="translate(1370.5,0)"><use data-c="3D" xlink:href="#MJX-10-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(2426.3,0)"><use data-c="7B" xlink:href="#MJX-10-TEX-N-7B"></use></g><g data-mml-node="mo" transform="translate(2926.3,0)"><use data-c="28" xlink:href="#MJX-10-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(3315.3,0)"><use data-c="1D462" xlink:href="#MJX-10-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(3887.3,0)"><use data-c="2C" xlink:href="#MJX-10-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(4332,0)"><use data-c="1D463" xlink:href="#MJX-10-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(4817,0)"><use data-c="29" xlink:href="#MJX-10-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(5483.8,0)"><use data-c="2208" xlink:href="#MJX-10-TEX-N-2208"></use></g><g data-mml-node="mi" transform="translate(6428.5,0)"><use data-c="1D438" xlink:href="#MJX-10-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(7470.3,0)"><use data-c="2223" xlink:href="#MJX-10-TEX-N-2223"></use></g><g data-mml-node="mi" transform="translate(8026.1,0)"><use data-c="1D462" xlink:href="#MJX-10-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(8598.1,0)"><use data-c="2C" xlink:href="#MJX-10-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(9042.8,0)"><use data-c="1D463" xlink:href="#MJX-10-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(9805.5,0)"><use data-c="2208" xlink:href="#MJX-10-TEX-N-2208"></use></g><g data-mml-node="msup" transform="translate(10750.3,0)"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-10-TEX-I-1D449"></use></g><g data-mml-node="TeXAtom" transform="translate(861.3,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="2032" xlink:href="#MJX-10-TEX-V-2032"></use></g></g></g><g data-mml-node="mo" transform="translate(11856.1,0)"><use data-c="7D" xlink:href="#MJX-10-TEX-N-7D"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>E</mi><mrow data-mjx-texclass="ORD"><mi data-mjx-alternate="1">′</mi></mrow></msup><mo>=</mo><mo fence="false" stretchy="false">{</mo><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>∈</mo><mi>E</mi><mo>∣</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>∈</mo><msup><mi>V</mi><mrow data-mjx-texclass="ORD"><mi data-mjx-alternate="1">′</mi></mrow></msup><mo fence="false" stretchy="false">}</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">E^{\prime}=\{(u,v)\in E\mid u,v\in V^{\prime}\}</script></p><p><span>邊集E&#39; 是原圖中兩端點都屬於該V&#39;的所有邊的集合</span></p><p>&nbsp;</p></li></ul><h3 id='2-edge-induced-subgraph-non-induced-subgraph'><span>2. Edge-induced subgraph (non-induced subgraph)</span></h3><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_07.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_07"></p><p><span>V&#39; 為所有的選擇的邊 E′ 中的相關聯的節點</span></p><h3 id='graph-isomorphism'><span>Graph isomorphism</span></h3><p><span>先前定義的subgraph中，</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="18.689ex" height="2.029ex" role="img" focusable="false" viewBox="0 -759 8260.6 897" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.312ex;"><defs><path id="MJX-11-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-11-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-11-TEX-N-2286" d="M84 346Q84 468 166 546T360 635Q361 635 370 635T395 635T430 636T475 636T524 636H679Q694 628 694 616Q694 607 681 597L522 596H470H441Q366 596 338 592T266 568Q244 557 224 542T179 500T139 433T124 346V341Q124 253 185 185Q244 121 328 103Q348 98 366 98T522 96H681Q694 86 694 76Q694 64 679 56H526Q510 56 480 56T434 55Q350 55 289 71T172 141Q84 223 84 346ZM104 -131T104 -118T118 -98H679Q694 -106 694 -118T679 -138H118Q104 -131 104 -118Z"></path><path id="MJX-11-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-11-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-11-TEX-N-64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path><path id="MJX-11-TEX-N-A0" d=""></path><path id="MJX-11-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-11-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(861.3,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-11-TEX-V-2032"></use></g></g><g data-mml-node="mo" transform="translate(1383.5,0)"><use data-c="2286" xlink:href="#MJX-11-TEX-N-2286"></use></g><g data-mml-node="mi" transform="translate(2439.3,0)"><use data-c="1D449" xlink:href="#MJX-11-TEX-I-1D449"></use></g><g data-mml-node="mtext" transform="translate(3208.3,0)"><use data-c="61" xlink:href="#MJX-11-TEX-N-61"></use><use data-c="6E" xlink:href="#MJX-11-TEX-N-6E" transform="translate(500,0)"></use><use data-c="64" xlink:href="#MJX-11-TEX-N-64" transform="translate(1056,0)"></use></g><g data-mml-node="mtext" transform="translate(4820.3,0)"><use data-c="A0" xlink:href="#MJX-11-TEX-N-A0"></use></g><g data-mml-node="msup" transform="translate(5070.3,0)"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-11-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(848.3,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-11-TEX-V-2032"></use></g></g><g data-mml-node="mo" transform="translate(6440.8,0)"><use data-c="2286" xlink:href="#MJX-11-TEX-N-2286"></use></g><g data-mml-node="mi" transform="translate(7496.6,0)"><use data-c="1D438" xlink:href="#MJX-11-TEX-I-1D438"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>V</mi><mo data-mjx-alternate="1">′</mo></msup><mo>⊆</mo><mi>V</mi><mtext>and</mtext><mtext>&nbsp;</mtext><msup><mi>E</mi><mo data-mjx-alternate="1">′</mo></msup><mo>⊆</mo><mi>E</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">V' \subseteq V \text{and} \ E' \subseteq E</script><span> 都源自 原圖 G。</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_09.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_09"></p><p><span>那要如何定義 V&#39;, E&#39; 來自完全不同的 graph。</span></p><blockquote><p><span>例如 &quot;</span><strong><span>𝑮𝟏 is “contained in” 𝑮𝟐</span></strong><span>&quot; </span>
+<span>G</span><sub><span>1</span></sub><span> 的三角結構出現在 G</span><sub><span>2</span></sub><span> 中</span></p></blockquote><p><span>如何表示 G</span><sub><span>1</span></sub><span> 被包含在一個更大的G</span><sub><span>2</span></sub><span>中?</span></p><hr /><ul><li><p><strong><span>Graph isomorphism problem</span></strong><span>: Check whether two</span>
+<span>graphs are identical</span></p><p><span>G</span><sub><span>1</span></sub><span> 與 G</span><sub><span>2</span></sub><span> 是 isomorphic，如果存在bijection。</span></p><ul><li><p><span>bijection: 一個圖的節點與另一個圖的節點存在一一對應的關係使得所有邊都得以保留</span>
+<span>-&gt; 若 u, v 在 G1中相連，則mapping of u, mapping of v 在G2中也相連</span></p><p><span>(Slide中的 bijection</span></p><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="29.714ex" height="5.62ex" role="img" focusable="false" viewBox="0 -1492 13133.4 2484" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.244ex;"><defs><path id="MJX-12-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-12-TEX-N-3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-12-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-12-TEX-N-AF" d="M69 544V590H430V544H69Z"></path><path id="MJX-12-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-12-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-12-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-12-TEX-N-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path id="MJX-12-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-12-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-12-TEX-N-68" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 124T102 167T103 217T103 272T103 329Q103 366 103 407T103 482T102 542T102 586T102 603Q99 622 88 628T43 637H25V660Q25 683 27 683L37 684Q47 685 66 686T103 688Q120 689 140 690T170 693T181 694H184V367Q244 442 328 442Q451 442 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-12-TEX-N-A0" d=""></path><path id="MJX-12-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-12-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-12-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-12-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-12-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-12-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-12-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-12-TEX-N-2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path><path id="MJX-12-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-12-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-12-TEX-N-66" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z"></path><path id="MJX-12-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-12-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,558)"><g data-mml-node="mtd"></g><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D453" xlink:href="#MJX-12-TEX-I-1D453"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(550,0)"><g data-mml-node="mo"><use data-c="3A" xlink:href="#MJX-12-TEX-N-3A"></use></g></g><g data-mml-node="msub" transform="translate(828,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-12-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(431,244) translate(-250 0)"><use data-c="AF" xlink:href="#MJX-12-TEX-N-AF"></use></g></g></g><g data-mml-node="TeXAtom" transform="translate(616,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-12-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(2125.3,0)"><use data-c="2192" xlink:href="#MJX-12-TEX-N-2192"></use></g><g data-mml-node="msub" transform="translate(3403.1,0)"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-12-TEX-I-1D449"></use></g><g data-mml-node="TeXAtom" transform="translate(616,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-12-TEX-N-32"></use></g></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4422.7,0)"><g data-mml-node="mi"><use data-c="73" xlink:href="#MJX-12-TEX-N-73"></use><use data-c="75" xlink:href="#MJX-12-TEX-N-75" transform="translate(394,0)"></use><use data-c="63" xlink:href="#MJX-12-TEX-N-63" transform="translate(950,0)"></use><use data-c="68" xlink:href="#MJX-12-TEX-N-68" transform="translate(1394,0)"></use></g><g data-mml-node="mtext" transform="translate(1950,0)"><use data-c="A0" xlink:href="#MJX-12-TEX-N-A0"></use></g><g data-mml-node="mi" transform="translate(2200,0)"><use data-c="74" xlink:href="#MJX-12-TEX-N-74"></use><use data-c="68" xlink:href="#MJX-12-TEX-N-68" transform="translate(389,0)"></use><use data-c="61" xlink:href="#MJX-12-TEX-N-61" transform="translate(945,0)"></use><use data-c="74" xlink:href="#MJX-12-TEX-N-74" transform="translate(1445,0)"></use></g></g><g data-mml-node="mo" transform="translate(8456.7,0)"><use data-c="28" xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(8845.7,0)"><use data-c="1D462" xlink:href="#MJX-12-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(9417.7,0)"><use data-c="2C" xlink:href="#MJX-12-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(9862.3,0)"><use data-c="1D463" xlink:href="#MJX-12-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(10347.3,0)"><use data-c="29" xlink:href="#MJX-12-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(11014.1,0)"><use data-c="2208" xlink:href="#MJX-12-TEX-N-2208"></use></g><g data-mml-node="msub" transform="translate(11958.9,0)"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-12-TEX-I-1D438"></use></g><g data-mml-node="TeXAtom" transform="translate(771,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-12-TEX-N-31"></use></g></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-742)"><g data-mml-node="mtd"></g><g data-mml-node="mtd"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="69" xlink:href="#MJX-12-TEX-N-69"></use><use data-c="66" xlink:href="#MJX-12-TEX-N-66" transform="translate(278,0)"></use><use data-c="66" xlink:href="#MJX-12-TEX-N-66" transform="translate(584,0)"></use></g></g><g data-mml-node="mrow" transform="translate(1122.7,0)"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(389,0)"><use data-c="1D453" xlink:href="#MJX-12-TEX-I-1D453"></use></g><g data-mml-node="mo" transform="translate(939,0)"><use data-c="28" xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1328,0)"><use data-c="1D44E" xlink:href="#MJX-12-TEX-I-1D44E"></use></g><g data-mml-node="mo" transform="translate(1857,0)"><use data-c="29" xlink:href="#MJX-12-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2246,0)"><use data-c="2C" xlink:href="#MJX-12-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(2690.7,0)"><use data-c="1D453" xlink:href="#MJX-12-TEX-I-1D453"></use></g><g data-mml-node="mo" transform="translate(3240.7,0)"><use data-c="28" xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(3629.7,0)"><use data-c="1D44F" xlink:href="#MJX-12-TEX-I-1D44F"></use></g><g data-mml-node="mo" transform="translate(4058.7,0)"><use data-c="29" xlink:href="#MJX-12-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(4447.7,0)"><use data-c="29" xlink:href="#MJX-12-TEX-N-29"></use></g></g><g data-mml-node="mo" transform="translate(6237.1,0)"><use data-c="2208" xlink:href="#MJX-12-TEX-N-2208"></use></g><g data-mml-node="msub" transform="translate(7181.9,0)"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-12-TEX-I-1D438"></use></g><g data-mml-node="TeXAtom" transform="translate(771,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-12-TEX-N-32"></use></g></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd></mtd><mtd><mi>f</mi><mrow data-mjx-texclass="ORD"><mo>:</mo></mrow><msub><mrow data-mjx-texclass="ORD"><mover><mi>V</mi><mo stretchy="false">¯</mo></mover></mrow><mrow data-mjx-texclass="ORD"><mn>1</mn></mrow></msub><mo accent="false" stretchy="false">→</mo><msub><mi>V</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msub><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false">such</mi><mtext>&nbsp;</mtext><mi data-mjx-auto-op="false">that</mi></mrow><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>∈</mo><msub><mi>E</mi><mrow data-mjx-texclass="ORD"><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd></mtd><mtd><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false">iff</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>∈</mo><msub><mi>E</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msub></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container><script type="math/tex">\begin{aligned}&f{:} \bar{V}_{1}\to V_{2} \mathrm{such~that} (u,v)\in E_{1} \\& \mathrm{iff}\left(f(a),f(b)\right)\in E_{2}\end{aligned}</script><span> </span></p><p><span>應該改成</span></p><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="29.714ex" height="5.62ex" role="img" focusable="false" viewBox="0 -1492 13133.4 2484" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.244ex;"><defs><path id="MJX-13-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-13-TEX-N-3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-13-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-13-TEX-N-AF" d="M69 544V590H430V544H69Z"></path><path id="MJX-13-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-13-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-13-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-13-TEX-N-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path id="MJX-13-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-13-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-13-TEX-N-68" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 124T102 167T103 217T103 272T103 329Q103 366 103 407T103 482T102 542T102 586T102 603Q99 622 88 628T43 637H25V660Q25 683 27 683L37 684Q47 685 66 686T103 688Q120 689 140 690T170 693T181 694H184V367Q244 442 328 442Q451 442 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-13-TEX-N-A0" d=""></path><path id="MJX-13-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-13-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-13-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-13-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-13-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-13-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-13-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-13-TEX-N-2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path><path id="MJX-13-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-13-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-13-TEX-N-66" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,558)"><g data-mml-node="mtd"></g><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D453" xlink:href="#MJX-13-TEX-I-1D453"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(550,0)"><g data-mml-node="mo"><use data-c="3A" xlink:href="#MJX-13-TEX-N-3A"></use></g></g><g data-mml-node="msub" transform="translate(828,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-13-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(431,244) translate(-250 0)"><use data-c="AF" xlink:href="#MJX-13-TEX-N-AF"></use></g></g></g><g data-mml-node="TeXAtom" transform="translate(616,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-13-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(2125.3,0)"><use data-c="2192" xlink:href="#MJX-13-TEX-N-2192"></use></g><g data-mml-node="msub" transform="translate(3403.1,0)"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-13-TEX-I-1D449"></use></g><g data-mml-node="TeXAtom" transform="translate(616,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-13-TEX-N-32"></use></g></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4422.7,0)"><g data-mml-node="mi"><use data-c="73" xlink:href="#MJX-13-TEX-N-73"></use><use data-c="75" xlink:href="#MJX-13-TEX-N-75" transform="translate(394,0)"></use><use data-c="63" xlink:href="#MJX-13-TEX-N-63" transform="translate(950,0)"></use><use data-c="68" xlink:href="#MJX-13-TEX-N-68" transform="translate(1394,0)"></use></g><g data-mml-node="mtext" transform="translate(1950,0)"><use data-c="A0" xlink:href="#MJX-13-TEX-N-A0"></use></g><g data-mml-node="mi" transform="translate(2200,0)"><use data-c="74" xlink:href="#MJX-13-TEX-N-74"></use><use data-c="68" xlink:href="#MJX-13-TEX-N-68" transform="translate(389,0)"></use><use data-c="61" xlink:href="#MJX-13-TEX-N-61" transform="translate(945,0)"></use><use data-c="74" xlink:href="#MJX-13-TEX-N-74" transform="translate(1445,0)"></use></g></g><g data-mml-node="mo" transform="translate(8456.7,0)"><use data-c="28" xlink:href="#MJX-13-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(8845.7,0)"><use data-c="1D462" xlink:href="#MJX-13-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(9417.7,0)"><use data-c="2C" xlink:href="#MJX-13-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(9862.3,0)"><use data-c="1D463" xlink:href="#MJX-13-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(10347.3,0)"><use data-c="29" xlink:href="#MJX-13-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(11014.1,0)"><use data-c="2208" xlink:href="#MJX-13-TEX-N-2208"></use></g><g data-mml-node="msub" transform="translate(11958.9,0)"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-13-TEX-I-1D438"></use></g><g data-mml-node="TeXAtom" transform="translate(771,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-13-TEX-N-31"></use></g></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-742)"><g data-mml-node="mtd"></g><g data-mml-node="mtd"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="69" xlink:href="#MJX-13-TEX-N-69"></use><use data-c="66" xlink:href="#MJX-13-TEX-N-66" transform="translate(278,0)"></use><use data-c="66" xlink:href="#MJX-13-TEX-N-66" transform="translate(584,0)"></use></g></g><g data-mml-node="mrow" transform="translate(1122.7,0)"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-13-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(389,0)"><use data-c="1D453" xlink:href="#MJX-13-TEX-I-1D453"></use></g><g data-mml-node="mo" transform="translate(939,0)"><use data-c="28" xlink:href="#MJX-13-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1328,0)"><use data-c="1D462" xlink:href="#MJX-13-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(1900,0)"><use data-c="29" xlink:href="#MJX-13-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2289,0)"><use data-c="2C" xlink:href="#MJX-13-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(2733.7,0)"><use data-c="1D453" xlink:href="#MJX-13-TEX-I-1D453"></use></g><g data-mml-node="mo" transform="translate(3283.7,0)"><use data-c="28" xlink:href="#MJX-13-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(3672.7,0)"><use data-c="1D463" xlink:href="#MJX-13-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(4157.7,0)"><use data-c="29" xlink:href="#MJX-13-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(4546.7,0)"><use data-c="29" xlink:href="#MJX-13-TEX-N-29"></use></g></g><g data-mml-node="mo" transform="translate(6336.1,0)"><use data-c="2208" xlink:href="#MJX-13-TEX-N-2208"></use></g><g data-mml-node="msub" transform="translate(7280.9,0)"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-13-TEX-I-1D438"></use></g><g data-mml-node="TeXAtom" transform="translate(771,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-13-TEX-N-32"></use></g></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd></mtd><mtd><mi>f</mi><mrow data-mjx-texclass="ORD"><mo>:</mo></mrow><msub><mrow data-mjx-texclass="ORD"><mover><mi>V</mi><mo stretchy="false">¯</mo></mover></mrow><mrow data-mjx-texclass="ORD"><mn>1</mn></mrow></msub><mo accent="false" stretchy="false">→</mo><msub><mi>V</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msub><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false">such</mi><mtext>&nbsp;</mtext><mi data-mjx-auto-op="false">that</mi></mrow><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>∈</mo><msub><mi>E</mi><mrow data-mjx-texclass="ORD"><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd></mtd><mtd><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false">iff</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>∈</mo><msub><mi>E</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msub></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container><script type="math/tex">\begin{aligned}&f{:} \bar{V}_{1}\to V_{2} \mathrm{such~that} (u,v)\in E_{1} \\& \mathrm{iff}\left(f(u),f(v)\right)\in E_{2}\end{aligned}</script></p><p><span>)</span></p><ul><li><p><span>mapping f : isomorphism</span></p><p><span>映射 </span><em><span>f</span></em></p></li></ul></li></ul></li></ul><blockquote><p><span>NP-hard ?</span></p></blockquote><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_10.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_10"></p><p><span>(沒有提到weight of edge)</span></p><h3 id='-'><span>-</span></h3><p><span>𝐺</span><sub><span>2</span></sub><span> is subgraph-isomorphic to 𝐺</span><sub><span>1</span></sub><span> if some</span>
+<span>subgraph of 𝐺</span><sub><span>2</span></sub><span> is isomorphic to 𝐺</span><sub><span>1</span></sub></p><ul><li><p><span>= G</span><sub><span>1</span></sub><span> 是 G</span><sub><span>2</span></sub><span> 的subgraph</span></p><ul><li><p><span>利用先前的subgrapg的定義</span></p></li></ul></li></ul><p>&nbsp;</p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_11.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_11"></p><h3 id='--2'><span>-</span></h3><p><span>all subgraphs up to a given size (# nodes)</span></p><p><span>隨著size的提升，subgraph的種類(non-iosmorphic)會超指數增加。</span></p><p><span>而在任務&quot;在一個 graph中，找到 &quot;常見&quot; 的 subgraphs&quot;中</span>
+<span>此時若用傳統方法逐一計數會耗費大量算力。</span></p><h2 id='network-motifs'><span>Network Motifs</span></h2><ul><li><p><strong><span>network motifs</span></strong><span>: 圖中的一個反覆出現且有顯著模式的連接。</span></p><blockquote><p><span>“recurring, significant patterns of interconnections”</span></p></blockquote><ul><li><p><span>pattern: 指 (induced) subgraph</span></p></li><li><p><span>recurring: found many times → </span><em><span>frequency</span></em></p></li><li><p><span>significant: more frequent than expected (ex: in randomly generated graphs) → </span><em><span>random graphs</span></em></p></li></ul><p><span>後面這2好像是一個意思</span></p></li></ul><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_14.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_14"></p><ul><li><p><span>範例:</span>
+<img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_15.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_15"></p></li><li><p><span>Why do we need motifs?</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_16.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_16"></p></li></ul><h3 id='subgraph-frequency'><span>Subgraph frequency</span></h3><h4 id='graph-level-frequency-of-gq-in-gt'><span>Graph-level Frequency of G</span><sub><span>Q</span></sub><span> in G</span><sub><span>T</span></sub></h4><p><span>G</span><sub><span>Q</span></sub><span> : query graph  </span></p><p><span>G</span><sub><span>T</span></sub><span> : target graph dataset</span></p><hr /><p><span>G</span><sub><span>T</span></sub><span> 中存在多少與 G</span><sub><span>Q</span></sub><span> 為 subgraph-isomorphic 的子圖</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_17.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_17"></p><h4 id='node-level-frequency-of-gq-in-gt'><span>Node-level Frequency of G</span><sub><span>Q</span></sub><span> in G</span><sub><span>T</span></sub></h4><p><span>G</span><sub><span>Q</span></sub><span> : query graph  </span></p><p><span>v : anchor (a node in G</span><sub><span>Q</span></sub><span>)</span></p><p><span>G</span><sub><span>T</span></sub><span> : target graph dataset</span></p><hr /><p><span>計算 anchor node 可以映射到多少不同的nodes</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_18.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_18"></p><h3 id='motif-significance'><span>Motif Significance</span></h3><p><span>To define significance we need to have a null-model (i.e., point of comparison)</span>
+<span>Key idea: Subgraphs (that occur in a real network much more often than in a random network) have functional significance</span></p><h4 id='random-graphs'><span>Random Graphs</span></h4><ol start='' ><li><p><span>ER random graphs</span></p><ul><li><p><span>2個參數 -  n: 節點數；p:邊的概率</span></p></li><li><p><span>method: </span></p><ol start='' ><li><p><span>Create n nodes</span></p></li><li><p><span>for each pair of nodes (u, v), flip a biased coin with bias p</span></p></li></ol></li></ul><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_21.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_21"></p></li><li><p><span>Configuration model</span></p><ul><li><p><span>#nodes, #edges, degrees of the nodes</span></p></li><li><p><span>degree sequence k</span><sub><span>1</span></sub><span>, k</span><sub><span>2</span></sub><span> ... k</span><sub><span>N</span></sub><span> ，N = #nodes</span></p><p><span>指定每個節點的度數但沒有指定如何連接</span></p></li><li><p><span>method:</span></p><ol start='' ><li><p><span>把每個節點的degree視為nodes</span></p></li><li><p><span>隨機連接這些nodes</span></p><ul><li><p><span>忽略 self-loop, multiple spokes linked to each other</span></p></li></ul></li></ol></li><li><p><span>G</span><sup><span>rand</span></sup><span>可以用於比較擁有</span><strong><span>相同degree sequence</span></strong><span>的G</span><sup><span>real</span></sup></p></li></ul><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_22.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_22"></p></li><li><p><span>-</span></p></li></ol><h4 id='overview'><span>overview</span></h4><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_24.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_24"></p><ul><li><p><span>Z-score</span></p><ul><li><p><span>| z | </span><span>&gt;</span><span> 2 在統計上是顯著的 </span></p></li></ul></li></ul><p><span>↓ (normalize) 多個z score組成的vector</span></p><ul><li><p><span>Network significance profile (SP)</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_25.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_25"></p></li></ul><h3 id='尚有很多擴展'><span>尚有很多擴展</span></h3><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_29.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_29"></p><h1 id='122-neural-subgraph-matching'><span>12.2 Neural Subgraph Matching</span></h1><p><span>利用 embedding space 的 geometric shape 來捕捉subgraph的關係</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_33.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_33"></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_34.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_34"></p><ul><li><p><span>Consider a binary prediction: </span>
+<span>Return </span><em><span>True</span></em><span> if </span><strong><span>query</span></strong><span> is isomorphic to a subgraph of the </span><strong><span>target graph</span></strong><span>, else return </span><em><span>False</span></em></p><p><span>不找到實際的對應映射，只返回True or False</span></p></li><li><p><span>Target graph → a set of neighborhoods</span></p><ul><li><p><span>用GNN產生每個neighborhood的embedding</span></p></li><li><p><span>用GNN產生 Query 的embedding</span></p></li><li><p><span>預測器根據這兩個embeddings 產生 True or False</span></p></li></ul></li></ul><h2 id='neural-architecture-for-subgraphs'><span>Neural Architecture for Subgraphs</span></h2><ul><li><p><span>node-anchored neighborhoods</span></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_38.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_38"></p></li></ul><h2 id='decomposing-gt-into-neighborhoods'><span>Decomposing G</span><sub><span>T</span></sub><span> into Neighborhoods</span></h2><ol start='' ><li><p><span>對於每個Node，獲取該節點周圍的k-hop neighborhood</span></p><ul><li><p><span>可以用breadth-first search(BFS)</span></p></li><li><p><span>k 通常用3~4</span></p></li></ul></li><li><p><span>將該node作為anchor ，計算每個anchor在其對應neighborhood中的node embedding</span></p></li></ol><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_40.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_40"></p><h2 id='order-embedding-space'><span>Order Embedding Space</span></h2><p><span>Map graph 𝐴 to a point Z</span><sub><span>A</span></sub><span> into a high-dimensional</span>
+<span>(e.g. 64-dim) embedding space, such that Z</span><sub><span>A</span></sub><span> is </span><strong><span>non-negative in all dimensions</span></strong><span> (&gt;= 0)</span></p><ul><li><p><span>Transitivity</span></p></li><li><p><span>Anti-symmetry</span></p></li><li><p><span>Closure under intersection</span></p></li></ul><h3 id='order-constraint'><span>Order Constraint</span></h3><p><span>We use a GNN to learn to embed neighborhoods and preserve the order embedding structure</span></p><ul><li><p><span>→ design loss functions based on the order</span>
+<span>constraint</span></p></li></ul><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_46.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_46"></p><ul><li><p><span>└ 如果G</span><sub><span>Q</span></sub><span> 是 G</span><sub><span>T</span></sub><span> 的subgraph，則G</span><sub><span>Q</span></sub><span>的嵌入座標的每個維度都應小於G</span><sub><span>T</span></sub></p></li></ul><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_47.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_47"></p><ul><li><p><span>max-margin loss</span></p></li><li><p><span>└ Z</span><sub><span>q</span></sub><span> - Z</span><sub><span>t</span></sub><span> &gt; 0 當Z</span><sub><span>q</span></sub><span>在Z</span><sub><span>t</span></sub><span>的&quot;上&quot;或&quot;右&quot;方</span></p></li></ul><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="52.041ex" height="5.428ex" role="img" focusable="false" viewBox="0 -1449.5 23002.1 2399" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.148ex;"><defs><path id="MJX-14-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-14-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-14-TEX-I-1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"></path><path id="MJX-14-TEX-I-1D45E" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-14-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-14-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-14-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-14-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-14-TEX-S3-7B" d="M618 -943L612 -949H582L568 -943Q472 -903 411 -841T332 -703Q327 -682 327 -653T325 -350Q324 -28 323 -18Q317 24 301 61T264 124T221 171T179 205T147 225T132 234Q130 238 130 250Q130 255 130 258T131 264T132 267T134 269T139 272T144 275Q207 308 256 367Q310 436 323 519Q324 529 325 851Q326 1124 326 1154T332 1205Q369 1358 566 1443L582 1450H612L618 1444V1429Q618 1413 616 1411L608 1406Q599 1402 585 1393T552 1372T515 1343T479 1305T449 1257T429 1200Q425 1180 425 1152T423 851Q422 579 422 549T416 498Q407 459 388 424T346 364T297 318T250 284T214 264T197 254L188 251L205 242Q290 200 345 138T416 3Q421 -18 421 -48T423 -349Q423 -397 423 -472Q424 -677 428 -694Q429 -697 429 -699Q434 -722 443 -743T465 -782T491 -816T519 -845T548 -868T574 -886T595 -899T610 -908L616 -910Q618 -912 618 -928V-943Z"></path><path id="MJX-14-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-14-TEX-N-77" d="M90 368Q84 378 76 380T40 385H18V431H24L43 430Q62 430 84 429T116 428Q206 428 221 431H229V385H215Q177 383 177 368Q177 367 221 239L265 113L339 328L333 345Q323 374 316 379Q308 384 278 385H258V431H264Q270 428 348 428Q439 428 454 431H461V385H452Q404 385 404 369Q404 366 418 324T449 234T481 143L496 100L537 219Q579 341 579 347Q579 363 564 373T530 385H522V431H529Q541 428 624 428Q692 428 698 431H703V385H697Q696 385 691 385T682 384Q635 377 619 334L559 161Q546 124 528 71Q508 12 503 1T487 -11H479Q460 -11 456 -4Q455 -3 407 133L361 267Q359 263 266 -4Q261 -11 243 -11H238Q225 -11 220 -3L90 368Z"></path><path id="MJX-14-TEX-N-68" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 124T102 167T103 217T103 272T103 329Q103 366 103 407T103 482T102 542T102 586T102 603Q99 622 88 628T43 637H25V660Q25 683 27 683L37 684Q47 685 66 686T103 688Q120 689 140 690T170 693T181 694H184V367Q244 442 328 442Q451 442 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-14-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-14-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-14-TEX-N-A0" d=""></path><path id="MJX-14-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-14-TEX-N-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path id="MJX-14-TEX-N-20" d=""></path><path id="MJX-14-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-14-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-14-TEX-N-62" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z"></path><path id="MJX-14-TEX-N-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path id="MJX-14-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-14-TEX-N-70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z"></path><path id="MJX-14-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-14-TEX-N-66" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z"></path><path id="MJX-14-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"></path><path id="MJX-14-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-14-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(764,0)"><use data-c="28" xlink:href="#MJX-14-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(1153,0)"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-14-TEX-I-1D43A"></use></g><g data-mml-node="mi" transform="translate(819,-150) scale(0.707)"><use data-c="1D45E" xlink:href="#MJX-14-TEX-I-1D45E"></use></g></g><g data-mml-node="mo" transform="translate(2347.3,0)"><use data-c="2C" xlink:href="#MJX-14-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(2791.9,0)"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-14-TEX-I-1D43A"></use></g><g data-mml-node="mi" transform="translate(819,-150) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-14-TEX-I-1D461"></use></g></g><g data-mml-node="mo" transform="translate(3916.2,0)"><use data-c="29" xlink:href="#MJX-14-TEX-N-29"></use></g></g><g data-mml-node="mtd" transform="translate(4305.2,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-14-TEX-N-3D"></use></g><g data-mml-node="mrow" transform="translate(1333.6,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7B" xlink:href="#MJX-14-TEX-S3-7B"></use></g><g data-mml-node="mtable" transform="translate(750,0)"><g data-mml-node="mtr" transform="translate(0,637.2)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="30" xlink:href="#MJX-14-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(500,0)"><use data-c="2C" xlink:href="#MJX-14-TEX-N-2C"></use></g></g><g data-mml-node="mtd" transform="translate(2833.8,0)"><g data-mml-node="mtext"><use data-c="77" xlink:href="#MJX-14-TEX-N-77"></use><use data-c="68" xlink:href="#MJX-14-TEX-N-68" transform="translate(722,0)"></use><use data-c="65" xlink:href="#MJX-14-TEX-N-65" transform="translate(1278,0)"></use><use data-c="6E" xlink:href="#MJX-14-TEX-N-6E" transform="translate(1722,0)"></use><use data-c="A0" xlink:href="#MJX-14-TEX-N-A0" transform="translate(2278,0)"></use></g><g data-mml-node="msub" transform="translate(2528,0)"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-14-TEX-I-1D43A"></use></g><g data-mml-node="mi" transform="translate(819,-150) scale(0.707)"><use data-c="1D45E" xlink:href="#MJX-14-TEX-I-1D45E"></use></g></g><g data-mml-node="mtext" transform="translate(3722.3,0)"><use data-c="A0" xlink:href="#MJX-14-TEX-N-A0"></use><use data-c="69" xlink:href="#MJX-14-TEX-N-69" transform="translate(250,0)"></use><use data-c="73" xlink:href="#MJX-14-TEX-N-73" transform="translate(528,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(922,0)"></use><use data-c="61" xlink:href="#MJX-14-TEX-N-61" transform="translate(1172,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(1672,0)"></use><use data-c="73" xlink:href="#MJX-14-TEX-N-73" transform="translate(1922,0)"></use><use data-c="75" xlink:href="#MJX-14-TEX-N-75" transform="translate(2316,0)"></use><use data-c="62" xlink:href="#MJX-14-TEX-N-62" transform="translate(2872,0)"></use><use data-c="67" xlink:href="#MJX-14-TEX-N-67" transform="translate(3428,0)"></use><use data-c="72" xlink:href="#MJX-14-TEX-N-72" transform="translate(3928,0)"></use><use data-c="61" xlink:href="#MJX-14-TEX-N-61" transform="translate(4320,0)"></use><use data-c="70" xlink:href="#MJX-14-TEX-N-70" transform="translate(4820,0)"></use><use data-c="68" xlink:href="#MJX-14-TEX-N-68" transform="translate(5376,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(5932,0)"></use><use data-c="6F" xlink:href="#MJX-14-TEX-N-6F" transform="translate(6182,0)"></use><use data-c="66" xlink:href="#MJX-14-TEX-N-66" transform="translate(6682,0)"></use><use data-c="A0" xlink:href="#MJX-14-TEX-N-A0" transform="translate(6988,0)"></use></g><g data-mml-node="msub" transform="translate(10960.3,0)"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-14-TEX-I-1D43A"></use></g><g data-mml-node="mi" transform="translate(819,-150) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-14-TEX-I-1D461"></use></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-600)"><g data-mml-node="mtd"><g data-mml-node="mo"><use data-c="3E" xlink:href="#MJX-14-TEX-N-3E"></use></g><g data-mml-node="mn" transform="translate(1055.8,0)"><use data-c="30" xlink:href="#MJX-14-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(1555.8,0)"><use data-c="2C" xlink:href="#MJX-14-TEX-N-2C"></use></g></g><g data-mml-node="mtd" transform="translate(2833.8,0)"><g data-mml-node="mtext"><use data-c="77" xlink:href="#MJX-14-TEX-N-77"></use><use data-c="68" xlink:href="#MJX-14-TEX-N-68" transform="translate(722,0)"></use><use data-c="65" xlink:href="#MJX-14-TEX-N-65" transform="translate(1278,0)"></use><use data-c="6E" xlink:href="#MJX-14-TEX-N-6E" transform="translate(1722,0)"></use><use data-c="A0" xlink:href="#MJX-14-TEX-N-A0" transform="translate(2278,0)"></use></g><g data-mml-node="msub" transform="translate(2528,0)"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-14-TEX-I-1D43A"></use></g><g data-mml-node="mi" transform="translate(819,-150) scale(0.707)"><use data-c="1D45E" xlink:href="#MJX-14-TEX-I-1D45E"></use></g></g><g data-mml-node="mtext" transform="translate(3722.3,0)"><use data-c="A0" xlink:href="#MJX-14-TEX-N-A0"></use><use data-c="69" xlink:href="#MJX-14-TEX-N-69" transform="translate(250,0)"></use><use data-c="73" xlink:href="#MJX-14-TEX-N-73" transform="translate(528,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(922,0)"></use><use data-c="6E" xlink:href="#MJX-14-TEX-N-6E" transform="translate(1172,0)"></use><use data-c="6F" xlink:href="#MJX-14-TEX-N-6F" transform="translate(1728,0)"></use><use data-c="74" xlink:href="#MJX-14-TEX-N-74" transform="translate(2228,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(2617,0)"></use><use data-c="61" xlink:href="#MJX-14-TEX-N-61" transform="translate(2867,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(3367,0)"></use><use data-c="73" xlink:href="#MJX-14-TEX-N-73" transform="translate(3617,0)"></use><use data-c="75" xlink:href="#MJX-14-TEX-N-75" transform="translate(4011,0)"></use><use data-c="62" xlink:href="#MJX-14-TEX-N-62" transform="translate(4567,0)"></use><use data-c="67" xlink:href="#MJX-14-TEX-N-67" transform="translate(5123,0)"></use><use data-c="72" xlink:href="#MJX-14-TEX-N-72" transform="translate(5623,0)"></use><use data-c="61" xlink:href="#MJX-14-TEX-N-61" transform="translate(6015,0)"></use><use data-c="70" xlink:href="#MJX-14-TEX-N-70" transform="translate(6515,0)"></use><use data-c="68" xlink:href="#MJX-14-TEX-N-68" transform="translate(7071,0)"></use><use data-c="20" xlink:href="#MJX-14-TEX-N-20" transform="translate(7627,0)"></use><use data-c="6F" xlink:href="#MJX-14-TEX-N-6F" transform="translate(7877,0)"></use><use data-c="66" xlink:href="#MJX-14-TEX-N-66" transform="translate(8377,0)"></use><use data-c="A0" xlink:href="#MJX-14-TEX-N-A0" transform="translate(8683,0)"></use></g><g data-mml-node="msub" transform="translate(12655.3,0)"><g data-mml-node="mi"><use data-c="1D43A" xlink:href="#MJX-14-TEX-I-1D43A"></use></g><g data-mml-node="mi" transform="translate(819,-150) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-14-TEX-I-1D461"></use></g></g></g></g></g><g data-mml-node="mo" transform="translate(17363.3,0) translate(0 250)"></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mi>E</mi><mo stretchy="false">(</mo><msub><mi>G</mi><mi>q</mi></msub><mo>,</mo><msub><mi>G</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mtd><mtd><mi></mi><mo>=</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnalign="left left" columnspacing="1em" rowspacing=".2em"><mtr><mtd><mn>0</mn><mo>,</mo></mtd><mtd><mtext>when&nbsp;</mtext><msub><mi>G</mi><mi>q</mi></msub><mtext>&nbsp;is a subgraph of&nbsp;</mtext><msub><mi>G</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd><mo>&gt;</mo><mn>0</mn><mo>,</mo></mtd><mtd><mtext>when&nbsp;</mtext><msub><mi>G</mi><mi>q</mi></msub><mtext>&nbsp;is not a subgraph of&nbsp;</mtext><msub><mi>G</mi><mi>t</mi></msub></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container><script type="math/tex">\begin{align*}
+    E(G_q, G_t) &= 
+    \begin{cases}
+        0, & \text{when } G_q \text{ is a subgraph of } G_t \\ 
+        > 0, & \text{when } G_q \text{ is not a subgraph of } G_t
+    \end{cases}
+\end{align*}</script></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_49.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_49"></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_50.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_50"></p><ul><li><p><span>每次迭代使用不同的subgraph</span></p></li><li><p><span>BFS - depth: 3~5</span></p></li></ul><h1 id='123-finding-frequent-subgraphs'><span>12.3 Finding Frequent Subgraphs</span></h1><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_56.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_56"></p><p><span>任務:</span></p><ol start='' ><li><p><span>給定size的所有subgraph集合</span></p><p><span>用搜索程序，因為只需要知道頻率最高的motifs</span></p></li><li><p><span>計算集合中每個subgraph在G</span><sub><span>T</span></sub><span>中的frequency</span></p><p><span>使用GNN預測而非計算</span></p></li></ol><p>&nbsp;</p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_59.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_59"></p><h2 id='spminer'><span>SPMiner</span></h2><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_60.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_60"></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_62.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_62"></p><ul><li><p><span>super-graph region</span></p></li></ul><p>&nbsp;</p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_63.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_63"></p><p><img src="slide/12-motifs_%E9%A0%81%E9%9D%A2_64.png" referrerpolicy="no-referrer" alt="12-motifs_頁面_64"></p></div></div>
+
+<script>(function(){function e(e,n,i){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var t=e.target;t&&t!=this;t=t.parentNode)if(t.matches(n)){!1===i.call(t,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)}var t=document.body.parentElement,i=[],r=null,o=document.body.classList.contains("typora-export-collapse-outline");function a(){return t.scrollTop}e("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),u(),!1}),e("click",".outline-item",function(e){var t=this.querySelector(".outline-label");location.hash="#"+t.getAttribute("href"),o&&((t=this.closest(".outline-item-wrapper").classList).contains("outline-item-open")||t.add("outline-item-open"),d(),t.add("outline-item-active"))});function s(){var e=a();r=null;for(var t=0;t<i.length&&i[t][1]-e<60;t++)r=i[t]}function n(){c=setTimeout(function(){var n;i=[],n=a(),document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(e=>{var t=e.getAttribute("id");i.push([t,n+e.getBoundingClientRect().y])}),s(),u()},300)}var l,c,d=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},u=function(){if(r&&(d(),t=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(r[0]):r[0])+'"]')))if(o){var e=t.closest(".outline-item-open>ul>.outline-item-wrapper");if(e)e.classList.add("outline-item-active");else{for(var t,n=(t=t.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");n;)n=(t=n).parentElement.closest(".outline-item-wrapper");t.classList.add("outline-item-active")}}else t.closest(".outline-item-wrapper").classList.add("outline-item-active")};window.addEventListener("scroll",function(e){l&&clearTimeout(l),l=setTimeout(function(){s(),u()},300)});window.addEventListener("resize",function(e){c&&clearTimeout(c),n()}),n()})();</script></body>
+</html>
